@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Currency Exchange</title>
+        <script>
+           document.addEventListener('DOMContentLoaded', function(){
+                const apiKey = 'OMW3hCnb8t03GsTqJJn7ImVnC3Yb0CsU';  // Substitua com sua chave de acesso da API
+
+                const requestOptions = {
+                    method: 'GET',
+                    headers: {
+                        "apikey": apiKey  // Adicionando a chave da API no cabeçalho
+                    },
+                    redirect: 'follow'
+                };
+
+                // URL da API para obter a taxa de câmbio de USD para EUR
+                const url = "https://api.apilayer.com/exchangerates_data/symbols";
+
+                fetch(url, requestOptions)
+                .then(response => response.json())  // Usando .json() para pegar os dados como JSON
+                .then(data => {
+                   console.log(data)
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    document.querySelector('body').innerHTML = 'Error fetching data from API.';
+                });
+           });
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
